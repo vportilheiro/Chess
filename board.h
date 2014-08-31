@@ -33,9 +33,4 @@ private:
     };
 };
 
-std::ostream& operator <<(std::ostream &out, const Board &board) {
-    out << "This is a board." << std::endl;
-}
-
-
 #endif
