@@ -18,10 +18,3 @@ Pawn::Pawn() {
     name = "pawn";
 }
 Pawn::~Pawn() {}
-
-bool Pawn::canMoveTo(char newColumn, short newRow) {
-    if (newRow == (row + 1)) return true;
-    if (color == white && row == 2 && newRow == 4) return true;
-    if (color == black && row == 7 && newRow == 5) return true;
-    return false;
-}

@@ -16,8 +16,9 @@ public:
     Board();
     ~Board();
 
-    Piece* pieceAt(char row, short column);
-    void move(Piece* piece, location);
+    bool isValidMove(Position initPos, Position endPos);
+    Piece* pieceAt(Position pos);
+    void move(Piece* piece, Position endPos);
 
     friend std::ostream& operator <<(std::ostream &out, const Board &board);
 
@@ -25,17 +26,16 @@ private:
 
     /* Data structure containing pointers to pieces */
     Piece[64] boardArray;
+
+    struct Position {
+        char row;
+        short column;
+    };
 };
 
 std::ostream& operator <<(std::ostream &out, const Board &board) {
-    for (int i = 0; i < 8; ++i) {
-        out << "- " << out.flush();
-    }
-    out << std::endl;
-
-    for (int i = 0; i < 8; ++i) {
-        for (int j = 0; j < 8; ++j) {
-            out << pieceAt(
+    out << "This is a board." << std::endl;
+}
 
 
 #endif

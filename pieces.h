@@ -16,22 +16,15 @@ class Piece {
 public:
     Piece();
     ~Piece();
-
-    virtual bool canMoveTo(char newColumn, short newRow) = 0;
-    virtual bool canTakeOn(char newColumn, short newRow) = 0;
     friend std::ostream& operator<<(std::ostream &out, const Piece &piece);
 
 protected:
     std::string name;
     Color color;
-    char column;
-    short row;
 };
 
 class Pawn : public Piece {
 public:
     Pawn();
     ~Pawn();
-
-    virtual bool canMoveTo(char newColumn, short newRow);
 }
