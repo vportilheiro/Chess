@@ -10,6 +10,11 @@
 Piece::Piece() {}
 Piece::~Piece() {}
 
+std::string Piece::getName() const {
+    std::cout << "getName() called... name is " << name << std::endl;
+    return name;
+}
+
 std::ostream& operator <<(std::ostream &out, const Piece &piece) {
     out << piece.name;
 }

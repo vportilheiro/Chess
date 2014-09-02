@@ -16,6 +16,7 @@ class Piece {
 public:
     Piece();
     ~Piece();
+    std::string getName() const;
     friend std::ostream& operator<<(std::ostream &out, const Piece &piece);
 
 protected:

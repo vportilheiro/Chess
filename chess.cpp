@@ -16,7 +16,8 @@ Chess::~Chess() {
 }
 
 bool Chess::isValidMove(Position& start, Position& end) {
-    return true;
+    std::string name = board.pieceAt(start)->getName();
+    return false; 
 }
 
 bool Chess::isValidMove(std::string moveString) {
@@ -28,6 +29,7 @@ void Chess::move(std::string move) {
 }
 
 /* ===== Operators ===== */
+
 std::ostream& operator <<(std::ostream& out, const Chess &game) {
-    out << "This is the game";
+    out << game.board;
 }

@@ -11,8 +11,12 @@
 #include "pieces.h"
 
 struct Position {
-    char row;
-    short column;
+    char column;
+    short row;
+    Position(char c, short r) {
+        column = c;
+        row = r;
+    }
 };
 
 class Board {
@@ -22,6 +26,7 @@ public:
     ~Board();
 
     Piece* pieceAt(Position& pos) const;
+    Piece* pieceAt(char column, short row) const;
     void move(Position& start, Position& end);
 
     friend std::ostream& operator <<(std::ostream& out, const Board& board);
@@ -29,7 +34,7 @@ public:
 private:
 
     /* Data structure containing pointers to pieces */
-    Piece boardArray[8][8];
+    Piece* boardArray[8][8];
 
 };
 
