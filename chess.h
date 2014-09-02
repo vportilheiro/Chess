@@ -18,9 +18,10 @@ public:
     Chess();
     ~Chess();
 
-    bool isValidMove(std::string move);
+    bool isValidMove(Position& start, Position& end);
+    bool isValidMove(std::string moveString);
     void move(std::string move);
-    friend std::ostream& operator <<(ostream& out, const Chess& game);
+    friend std::ostream& operator <<(std::ostream& out, const Chess& game);
 
 private:
 

@@ -31,10 +31,13 @@ int main() {
     Chess game;
 
     while (true) {
+        std::cout << game << std::endl;
         std::string move = promptForMove("Move: ");
         if (move == QUIT) break;
         if (game.isValidMove(move)) {
             game.move(move);
+        } else {
+            std::cout << "Invalid move!" << std::endl;
         }
     }
     

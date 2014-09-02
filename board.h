@@ -10,27 +10,27 @@
 #include <iostream>
 #include "pieces.h"
 
+struct Position {
+    char row;
+    short column;
+};
+
 class Board {
 public:
 
     Board();
     ~Board();
 
-    bool isValidMove(Position initPos, Position endPos);
-    Piece* pieceAt(Position pos);
-    void move(Piece* piece, Position endPos);
+    Piece* pieceAt(Position& pos) const;
+    void move(Position& start, Position& end);
 
-    friend std::ostream& operator <<(std::ostream &out, const Board &board);
+    friend std::ostream& operator <<(std::ostream& out, const Board& board);
 
 private:
 
     /* Data structure containing pointers to pieces */
-    Piece[64] boardArray;
+    Piece boardArray[8][8];
 
-    struct Position {
-        char row;
-        short column;
-    };
 };
 
 #endif
