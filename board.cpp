@@ -9,9 +9,17 @@
 #include "board.h"
 
 Board::Board() {
-    //populateBoard();
-    boardArray[0][0] = new Pawn();
+    
+    /* Make sure that the memory is cleared */
+    for (int i = 0; i < 8; ++i) {
+        for (int j = 0; j < 8; ++j) {
+            boardArray[i][j] = NULL;
+        }
+    }
+
+    boardArray[0][0] = new Pawn(white);
 }
+
 Board::~Board() {
     delete boardArray[0][0];
 }
@@ -44,9 +52,11 @@ std::ostream& operator <<(std::ostream& out, const Board& board) {
         out << std::endl;
         out << "|";
         for (int j = 0; j < 8; ++j) {
-            std::string pieceString = " ";
-            if (board.pieceAt(8 - i, 'a' + j)) pieceString = board.pieceAt(8 - i, 'a' + j)->getName();
-            out << " " << pieceString << " |";
+            char piece = ' ';
+            if (board.pieceAt('a' + j, 1 + i) != NULL) {
+                piece = board.pieceAt('a' + j, 1 + i)->getChar();
+            }
+            out << " " << piece << " |";
         }
         out << std::endl;
         out << "|";

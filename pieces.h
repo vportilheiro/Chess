@@ -15,8 +15,9 @@ enum Color {white = 0,
 class Piece {
 public:
     Piece();
+    Piece(Color color);
     ~Piece();
-    std::string getName() const;
+    virtual char getChar() const = 0;
     friend std::ostream& operator<<(std::ostream &out, const Piece &piece);
 
 protected:
@@ -26,6 +27,7 @@ protected:
 
 class Pawn : public Piece {
 public:
-    Pawn();
+    Pawn(Color color);
     ~Pawn();
+    virtual char getChar() const;
 };

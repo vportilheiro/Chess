@@ -10,16 +10,26 @@
 Piece::Piece() {}
 Piece::~Piece() {}
 
-std::string Piece::getName() const {
-    std::cout << "getName() called... name is " << name << std::endl;
-    return name;
-}
-
 std::ostream& operator <<(std::ostream &out, const Piece &piece) {
     out << piece.name;
 }
 
-Pawn::Pawn() {
+Pawn::Pawn(Color color) {
     name = "pawn";
+    this->color = color;
 }
+
 Pawn::~Pawn() {}
+
+char Pawn::getChar() const {
+    switch (color) {
+        case white:
+            return 'P';
+            break;
+        case black:
+            return 'p';
+            break;
+        default:
+            return -1;
+    }
+}
