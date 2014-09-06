@@ -24,10 +24,13 @@ public:
 
     Board();
     ~Board();
-
+    
+    void clear();
     Piece* pieceAt(Position& pos) const;
     Piece* pieceAt(char column, short row) const;
     void move(Position& start, Position& end);
+    void setUpWhitePieces();
+    void setUpBlackPieces();
 
     friend std::ostream& operator <<(std::ostream& out, const Board& board);
 

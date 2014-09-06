@@ -31,3 +31,39 @@ public:
     ~Pawn();
     virtual char getChar() const;
 };
+
+class Rook : public Piece {
+public:
+    Rook(Color color);
+    ~Rook();
+    virtual char getChar() const;
+};
+
+class Knight : public Piece {
+public:
+    Knight(Color color);
+    ~Knight();
+    virtual char getChar() const;
+};
+
+class Bishop : public Piece {
+public:
+    Bishop(Color color);
+    ~Bishop();
+    virtual char getChar() const;
+};
+
+class Queen : public Piece {
+public:
+    Queen(Color color);
+    ~Queen();
+    virtual char getChar() const;
+};
+
+class King : public Piece {
+public:
+    King(Color color);
+    ~King();
+    virtual char getChar() const;
+};
+

@@ -9,19 +9,21 @@
 #include "board.h"
 
 Board::Board() {
-    
-    /* Make sure that the memory is cleared */
+    clear();
+    setUpWhitePieces();
+    setUpBlackPieces();
+}
+
+Board::~Board() {
+    delete boardArray[0][0];
+}
+
+void Board::clear() {
     for (int i = 0; i < 8; ++i) {
         for (int j = 0; j < 8; ++j) {
             boardArray[i][j] = NULL;
         }
     }
-
-    boardArray[0][0] = new Pawn(white);
-}
-
-Board::~Board() {
-    delete boardArray[0][0];
 }
 
 Piece* Board::pieceAt(Position& pos) const {
@@ -29,11 +31,39 @@ Piece* Board::pieceAt(Position& pos) const {
 }
 
 Piece* Board::pieceAt(char column, short row) const {
-    return boardArray[column - 'a'][row - 1];
+    return boardArray[row - 1][column - 'a'];
 }
 
 void Board::move(Position& start, Position& end) {
+    
+}
 
+void Board::setUpBlackPieces() {
+    for (int i = 0; i < 8; ++i) {
+        boardArray[1][i] = new Pawn(black);
+    }
+    boardArray[0][0] = new Rook(black);
+    boardArray[0][1] = new Knight(black);
+    boardArray[0][2] = new Bishop(black);
+    boardArray[0][3] = new Queen(black);
+    boardArray[0][4] = new King(black);
+    boardArray[0][5] = new Bishop(black);
+    boardArray[0][6] = new Knight(black);
+    boardArray[0][7] = new Rook(black);
+}
+
+void Board::setUpWhitePieces() {
+    for (int i = 0; i < 8; ++i) {
+        boardArray[6][i] = new Pawn(white);
+    }
+    boardArray[7][0] = new Rook(white);
+    boardArray[7][1] = new Knight(white);
+    boardArray[7][2] = new Bishop(white);
+    boardArray[7][3] = new Queen(white);
+    boardArray[7][4] = new King(white);
+    boardArray[7][5] = new Bishop(white);
+    boardArray[7][6] = new Knight(white);
+    boardArray[7][7] = new Rook(white);
 }
 
 std::ostream& operator <<(std::ostream& out, const Board& board) {
