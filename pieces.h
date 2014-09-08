@@ -9,7 +9,7 @@
 #include <iostream>
 #include <string>
 
-enum Color {white = 0,
+enum Color {white,
             black};
 
 class Piece {

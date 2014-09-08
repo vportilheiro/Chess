@@ -13,9 +13,9 @@
 struct Position {
     char column;
     short row;
-    Position(char c, short r) {
-        column = c;
-        row = r;
+    Position(char column, short row) {
+        this->column = column;
+        this->row = row;
     }
 };
 
@@ -28,7 +28,7 @@ public:
     void clear();
     Piece* pieceAt(Position& pos) const;
     Piece* pieceAt(char column, short row) const;
-    void move(Position& start, Position& end);
+    void move(const Position& start, const Position& end);
     void setUpWhitePieces();
     void setUpBlackPieces();
 

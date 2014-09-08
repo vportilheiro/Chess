@@ -31,11 +31,12 @@ Piece* Board::pieceAt(Position& pos) const {
 }
 
 Piece* Board::pieceAt(char column, short row) const {
-    return boardArray[row - 1][column - 'a'];
+    return boardArray[8 - row][column - 'a'];
 }
 
-void Board::move(Position& start, Position& end) {
-    
+void Board::move(const Position& start, const Position& end) {
+    boardArray[8 - end.row][end.column - 'a'] = boardArray[8 - start.row][start.column - 'a'];
+    boardArray[8 - start.row][start.column - 'a'] = NULL;
 }
 
 void Board::setUpBlackPieces() {
@@ -83,8 +84,8 @@ std::ostream& operator <<(std::ostream& out, const Board& board) {
         out << "|";
         for (int j = 0; j < 8; ++j) {
             char piece = ' ';
-            if (board.pieceAt('a' + j, 1 + i) != NULL) {
-                piece = board.pieceAt('a' + j, 1 + i)->getChar();
+            if (board.pieceAt('a' + j, 8 - i) != NULL) {
+                piece = board.pieceAt('a' + j, 8 - i)->getChar();
             }
             out << " " << piece << " |";
         }
