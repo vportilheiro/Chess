@@ -12,15 +12,23 @@
 #include <string>
 #include "board.h"
 
+struct Move {
+    Position start;
+    Position end;
+    Move(std::string);
+    Move(char startColumn, short startRow, char endColumn, short endRow);
+};
+
 class Chess {
 public:
 
     Chess();
     ~Chess();
 
-    bool isValidMove(Position& start, Position& end);
-    bool isValidMove(std::string moveString);
-    void move(std::string move);
+    bool isValidMove(const Position& start, const Position& end);
+    bool isValidMove(const Move& move);
+    bool isValidMove(std::string move);
+    void move(const Move& move);
     friend std::ostream& operator <<(std::ostream& out, const Chess& game);
 
 private:

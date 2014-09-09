@@ -13,10 +13,7 @@
 struct Position {
     char column;
     short row;
-    Position(char column, short row) {
-        this->column = column;
-        this->row = row;
-    }
+    Position(char column, short row);
 };
 
 class Board {

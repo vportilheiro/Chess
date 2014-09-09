@@ -8,6 +8,11 @@
 #include <cstddef>
 #include "board.h"
 
+Position::Position(char column, short row) {
+        this->column = column;
+        this->row = row;
+}
+
 Board::Board() {
     clear();
     setUpWhitePieces();
