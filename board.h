@@ -1,6 +1,12 @@
 /*      board.h
  *
  *      The class containing most of the game-state information, as a board.
+ *      Provides methods to modify the state of the board, setting up either
+ *      color pieces, executing a move, and clearing the board. also provides
+ *      methods to check whether any given Position is in-bounds, and to move
+ *      a piece from one Position to another.
+ *      The board itself is stored as a two dimensional array containing
+ *      pointers to Piece objects.
  *
  *      Vasco Portilheiro, 2014
  */
@@ -23,11 +29,12 @@ public:
     ~Board();
     
     void clear();
-    Piece* pieceAt(Position& pos) const;
+    Piece* pieceAt(const Position& pos) const;
     Piece* pieceAt(char column, short row) const;
     void move(const Position& start, const Position& end);
     void setUpWhitePieces();
     void setUpBlackPieces();
+    bool isInBounds(const Position& pos);
 
     friend std::ostream& operator <<(std::ostream& out, const Board& board);
 

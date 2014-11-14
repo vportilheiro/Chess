@@ -31,7 +31,7 @@ void Board::clear() {
     }
 }
 
-Piece* Board::pieceAt(Position& pos) const {
+Piece* Board::pieceAt(const Position& pos) const {
     return pieceAt(pos.column, pos.row);
 }
 
@@ -40,7 +40,8 @@ Piece* Board::pieceAt(char column, short row) const {
 }
 
 void Board::move(const Position& start, const Position& end) {
-    boardArray[8 - end.row][end.column - 'a'] = boardArray[8 - start.row][start.column - 'a'];
+    boardArray[8 - end.row][end.column - 'a'] = boardArray[8 - start.row]
+                                                          [start.column - 'a'];
     boardArray[8 - start.row][start.column - 'a'] = NULL;
 }
 
@@ -70,6 +71,12 @@ void Board::setUpWhitePieces() {
     boardArray[7][5] = new Bishop(white);
     boardArray[7][6] = new Knight(white);
     boardArray[7][7] = new Rook(white);
+}
+
+bool isInBounds(const Position& pos) {
+   if (( ('a' <= pos.column) && (pos.column <= 'h') ) &&
+       ( (1 <= pos.row) && (pos.row <= 8) ))
+       return true;
 }
 
 std::ostream& operator <<(std::ostream& out, const Board& board) {

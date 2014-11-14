@@ -7,6 +7,12 @@
 
 #include "pieces.h"
 
+MoveVector::MoveVector(int rowShift, int colShift, bool scalable) {
+    this->rowShift = rowShift;
+    this->colShift = colShift;
+    this->scalable = scalable;
+}
+
 Piece::Piece() {}
 Piece::~Piece() {}
 
@@ -32,6 +38,11 @@ char Pawn::getChar() const {
     }
 }
 
+const std::set<MoveVector> Pawn::moveVectorSet {
+    MoveVector(1, 0, false),
+    MoveVector(2, 0, false)
+};
+
 Rook::Rook(Color color) {
     name = "rook";
     this->color = color;
@@ -49,6 +60,11 @@ char Rook::getChar() const {
             return -1;
     }
 }
+
+const std::set<MoveVector> Rook::moveVectorSet {
+    MoveVector(1, 0, true),
+    MoveVector(0, 1, true)
+};
 
 Knight::Knight(Color color) {
     name = "knight";
@@ -68,6 +84,17 @@ char Knight::getChar() const {
     }
 }
 
+const std::set<MoveVector> Knight::moveVectorSet {
+    MoveVector(-2, -1, false),
+    MoveVector(-2, 1, false),
+    MoveVector(2, -1, false),
+    MoveVector(-2, 1, false),
+    MoveVector(-1, -2, false),
+    MoveVector(-1, 2, false),
+    MoveVector(1, -2, false),
+    MoveVector(1, 2, false)
+};
+
 Bishop::Bishop(Color color) {
     name = "bishop";
     this->color = color;
@@ -85,6 +112,11 @@ char Bishop::getChar() const {
             return -1;
     }
 }
+
+const std::set<MoveVector> Bishop::moveVectorSet {
+    MoveVector(1, 1, true),
+    MoveVector(1, -1, true)
+};
 
 Queen::Queen(Color color) {
     name = "queen";
@@ -104,6 +136,13 @@ char Queen::getChar() const {
     }
 }
 
+const std::set<MoveVector> Queen::moveVectorSet {
+    MoveVector(1, 0, true),
+    MoveVector(0, 1, true),
+    MoveVector(1, 1, true),
+    MoveVector(1, -1, true)
+};
+
 King::King(Color color) {
     name = "king";
     this->color = color;
@@ -121,3 +160,15 @@ char King::getChar() const {
             return -1;
     }
 }
+
+const std::set<MoveVector> King::moveVectorSet {
+    MoveVector(1, 0, false),
+    MoveVector(-1, 0, false),
+    MoveVector(0, 1, false),
+    MoveVector(0, -1, false),
+    MoveVector(1, 1, false),
+    MoveVector(-1, -1, false),
+    MoveVector(1, -1, false),
+    MoveVector(-1, 1, false)
+};
+

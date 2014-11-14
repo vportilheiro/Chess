@@ -1,6 +1,9 @@
 /*      chess.h
  *
- *      The description of a chess game.
+ *      The description of a chess game. Wraps the description of a Move,
+ *      which consists of two Positions. The Chess game may then check whether
+ *      a move is valid. Finally, a move may be executed, and the board
+ *      printed.
  *
  *      Vasco Portilheiro, 2014
  */
@@ -34,6 +37,9 @@ public:
 private:
 
    Board board;
+   Color turn;
+
+   bool kingIsInCheck(Color color) const;
 };
 
 #endif
